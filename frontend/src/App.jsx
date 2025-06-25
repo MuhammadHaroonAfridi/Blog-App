@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+// git clone https://github.com/MuhammadHaroonAfridi/Blog-App.git
 export default function App() {
   return (
  <>

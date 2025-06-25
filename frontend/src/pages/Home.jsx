@@ -1,28 +1,32 @@
 import React from "react";
-import CustomNavbar from "../components/Navbar";
-import { Carousel } from "react-bootstrap";
+import Navbar from "../components/Navbar";
 import NewPost from "../components/NewPost";
 import PopularPost from "../components/PopularPost";
 import TopPost from "../components/TopPost";
-import MainImages from "../components/MainImages";
+import Card from "../components/Card";
+
+
 
 export default function Home() {
   return (
     <>
-      <CustomNavbar />
-     <MainImages/>
-      {/* Popular Posts Section */}
-      <PopularPost />
-      {/* animation! */}
-      <div className="animated-bg">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+      <Navbar />
+     {/* <MainImages/> */}
+
+     <div className=" container mt-5">
+      <div className=" row">
+        <div className="col-md-4 col-lg-4 col-sm-6 co-12">
+          <Card/>
+        </div>
+        <div className="col-md-4 col-lg-4 col-sm-6 co-12">
+          <Card/>
+        </div>
+        <div className="col-md-4 col-lg-4 col-sm-6 co-12">
+          <Card/>
+        </div>
       </div>
-      <NewPost />
-      <TopPost/>
+     </div>
+ 
     </>
   );
 }

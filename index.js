@@ -3,7 +3,8 @@ import dotenv from 'dotenv'
 import DbCon from "./utils/db.js";
 import UserRoutes from "./routes/user.js";
 import cors from 'cors'
-import sendVerficationEmail from "./middlewares/Email/Email.js";
+import BlogRoutes from "./routes/Blog.routes.js";
+
 
 dotenv.config()
 
@@ -18,7 +19,7 @@ app.use(cors("*"))
 
 
 app.use('/api/user',UserRoutes)
-
+app.use('/api/blog',BlogRoutes)
 
 
 

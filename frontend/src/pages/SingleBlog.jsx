@@ -1,15 +1,20 @@
+import { useLocation } from "react-router-dom";
 import img from "../assets/singleimg.png"
 
 export default function SingleBlog() {
+  const loaction=useLocation()
+
+  const data=loaction.state
+  
   return (
     <div className="container mt-5">
       <div className="row">
         <div className="col-lg-9">
           <h2 className="fw-bold mb-4">
-            How to Spend the Perfect Day on Croatia’s Most Magical Island
+            {data.title}
           </h2>
           <img
-            src={img}
+            src={data.Image}
             className="img-fluid rounded mb-3"
             alt="Main Blog Image"
            
@@ -25,12 +30,9 @@ export default function SingleBlog() {
               <i className="bi bi-tag"></i> Category: Sport
             </div>
           </div>
+        
           <p>
-            <strong>Don't Wait. The Purpose Of Our Lives Is To Be Happy!</strong>
-          </p>
-          <p>
-            Upon arrival, your senses will be rewarded with the pleasant scent of
-            lemongrass oil...
+            {data.Desc}
           </p>
         </div>
 

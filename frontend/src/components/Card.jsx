@@ -1,17 +1,18 @@
 import React from 'react';
 import Car from '../assets/car.png';
-function Card({title}) {
+
+function Card({title,Desc,Image}) {
   return (
     <>
     
     
     
     <div className="custom-card">
-      <img src={Car} alt="Car" className="card-image" />
+      <img src={Image} alt="Car" className="card-image" />
       <div className="card-overlay">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">
-          Ah, the joy of the open road — it’s a great feeling, but it takes more to bring you safely...
+        {Desc}
         </p>
       </div>
     </div>

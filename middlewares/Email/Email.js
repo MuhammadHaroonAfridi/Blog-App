@@ -1,6 +1,7 @@
 import transporter from "./Email.config.js";
 import { Verification_Email_Template, Welcome_Email_Template } from "./EmailTemplate.js";
 
+
 const sendVerficationEmail = async (email, verificationCode) => {
   try {
     await transporter.sendMail({
@@ -16,14 +17,14 @@ const sendVerficationEmail = async (email, verificationCode) => {
   }
 };
 
-const sendWelocmEmail = async (email) => {
+const sendWelocmEmail = async (email,name) => {
   try {
     await transporter.sendMail({
       from: `"Blog APP" <haroontime437@gmail.com>`,
       to: email,
       subject: "Welcome to Blog App 🎉",
       text: "Welcome to Blog App!",
-      html: Welcome_Email_Template,
+      html: Welcome_Email_Template.replace("{name}",name),
     });
     console.log("Welcome email sent successfully to:", email);
   } catch (error) {
@@ -31,4 +32,8 @@ const sendWelocmEmail = async (email) => {
   }
 };
 
-export { sendVerficationEmail, sendWelocmEmail };
+
+export { sendVerficationEmail ,sendWelocmEmail};
+
+
+

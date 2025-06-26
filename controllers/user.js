@@ -1,9 +1,11 @@
 
-import PendingUserModel from "../models/PendingUser.js";
 import { sendVerficationEmail, sendWelocmEmail } from "../middlewares/Email/Email.js";
+import PendingUserModel from "../models/PendingUser.js";
+import jwt from 'jsonwebtoken'
 
 import bcryptjs from 'bcryptjs'
 import UserModal from "../models/user.models.js";
+
 
 const Register = async (req, res) => {
   const { name, email, password } = req.body;
@@ -116,7 +118,7 @@ const VerifyEmail=async(req,res)=>{
 
      await Finaluser.save()
      await PendingUserModel.findOneAndDelete({email})
-     await sendWelocmEmail(email)
+    await sendWelocmEmail(email,Existuser.name)
            return res.status(200).json({
       message: "User Verifed successfully",
       user:Finaluser,
@@ -132,4 +134,49 @@ const VerifyEmail=async(req,res)=>{
   }
 }
 
-export { Register ,VerifyEmail};
+const Login=async(req,res)=>{
+  const {email,password}=req.body
+  try {
+    const user=await UserModal.findOne({email})
+    if (!user) {
+      return res.status(200).json({
+        message:"User not Found",
+        success:false
+        
+      })
+    }
+    const comaparePassword=await bcryptjs.compare(password,user.password)
+     if (!comaparePassword) {
+      return res.status(404).json({
+        message:"Invalid passwrod",
+        success:false
+        
+      })
+    }
+const token = jwt.sign(
+  {
+    id: user._id,
+    email: user.email,
+  },
+  process.env.Jwt_Secrete_Key, // ✅ Correct syntax: second parameter should be the secret key
+  {
+    expiresIn: '5h', // ✅ Correct option key: 'expiresIn', not 'expire'
+  }
+);
+    return res.status(200).json({
+      message:"Login successfully",
+      user,
+      success:true,
+      token
+    })
+  } catch (error) {
+    console.log('erro',error)
+      return res.status(500).json({
+        message:"interanl server errro",
+        success:false
+        
+      })
+  }
+}
+
+export { Register ,VerifyEmail,Login};

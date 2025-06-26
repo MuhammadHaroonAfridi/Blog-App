@@ -1,59 +1,57 @@
-import React, { useState } from 'react';
-import { Navbar, Nav, Container, NavDropdown, Form, FormControl, InputGroup, Button } from 'react-bootstrap';
-import { FaSearch, FaMoon, FaSun, FaEllipsisV } from 'react-icons/fa';
+import React from 'react'
+// import './Navbar.css';
 
-export default function CustomNavbar() {
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-    document.body.classList.toggle('bg-dark');
-    document.body.classList.toggle('text-white');
-  };
-
+function Navbar() {
   return (
-    <Navbar expand="lg" bg={darkMode ? "dark" : "light"} variant={darkMode ? "dark" : "light"} sticky="top" className="shadow-sm">
-      <Container fluid>
-        <Navbar.Brand href="#"> MyBlog</Navbar.Brand>
+    <>
+    
+     <nav className="navbar navbar-expand-lg custom-navbar">
+      <div className="container justify-content-center">
+        <a className="navbar-brand text-orange fw-bold me-5" href="#">LOGO</a>
 
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-            <NavDropdown title="Categories" id="navbarScrollingDropdown1">
-              <NavDropdown.Item href="#">Tech</NavDropdown.Item>
-              <NavDropdown.Item href="#">Travel</NavDropdown.Item>
-              <NavDropdown.Item href="#">Food</NavDropdown.Item>
-            </NavDropdown>
+        <div className="collapse navbar-collapse justify-content-center">
+          <ul className="navbar-nav gap-4">
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                Categories
+              </a>
+              <ul className="dropdown-menu">
+                <li><a className="dropdown-item" href="#">Category 1</a></li>
+                <li><a className="dropdown-item" href="#">Category 2</a></li>
+              </ul>
+            </li>
 
-            <NavDropdown title="Pages" id="navbarScrollingDropdown2">
-              <NavDropdown.Item href="#">Home</NavDropdown.Item>
-              <NavDropdown.Item href="#">Blogs</NavDropdown.Item>
-              <NavDropdown.Item href="#">Profile</NavDropdown.Item>
-            </NavDropdown>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                Pages
+              </a>
+              <ul className="dropdown-menu">
+                <li><a className="dropdown-item" href="#">Page 1</a></li>
+                <li><a className="dropdown-item" href="#">Page 2</a></li>
+              </ul>
+            </li>
 
-            <Nav.Link href="#">Contact Us</Nav.Link>
-            <Nav.Link href="#">About Us</Nav.Link>
-          </Nav>
+            <li className="nav-item">
+              <a className="nav-link" href="#">Contact Us</a>
+            </li>
 
-          <Form className="d-flex align-items-center gap-2">
-            <InputGroup>
-              <InputGroup.Text><FaEllipsisV /></InputGroup.Text>
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-secondary"><FaSearch /></Button>
-            </InputGroup>
+            <li className="nav-item">
+              <a className="nav-link" href="#">About Us</a>
+            </li>
+          </ul>
+        </div>
 
-            <Button variant={darkMode ? "light" : "dark"} onClick={toggleTheme}>
-              {darkMode ? <FaSun /> : <FaMoon />}
-            </Button>
-          </Form>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
+        <form className="d-flex align-items-center search-bar ms-auto">
+          <span className="dots">⋮</span>
+          <div className="input-group">
+            <input type="text" className="form-control search-input" placeholder="Search..." />
+            <span className="input-group-text search-icon"><i className="bi bi-search"></i></span>
+          </div>
+        </form>
+      </div>
+    </nav>
+    </>
+  )
 }
 
+export default Navbar

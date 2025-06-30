@@ -4,6 +4,7 @@ export default function SingleBlog() {
   return (
     <div className="container mt-5">
       <div className="row">
+        {/* singlepage_Blog */}
         <div className="col-lg-9">
           <h2 className="fw-bold mb-4">
             How to Spend the Perfect Day on Croatia’s Most Magical Island
@@ -35,7 +36,6 @@ export default function SingleBlog() {
         </div>
 
     
-
      {/* Comment section*/}
         <h6 className="mb-2 text-black">💬 Comments</h6>
       <div className="card p-3 mb-3 shadow-sm border-0" style={{background:'#F5F5F5'}}>
